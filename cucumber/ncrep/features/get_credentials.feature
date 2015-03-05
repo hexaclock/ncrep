@@ -1,4 +1,9 @@
 Feature: Get Credentials from Packet Capture CSV File
+	Scenario: No File Specified
+		  Given no input file
+		  When ncrep is run
+		  Then the screen output should "Please specify a packet capture CSV file"
+
 	Scenario: Find HTTP Credentials
 		  Given the input file "httpcap.csv"
 		  When ncrep is run
@@ -7,7 +12,12 @@ Feature: Get Credentials from Packet Capture CSV File
 	Scenario: Find Telnet Credentials
 		  Given the input file "telnetcap.csv"
 		  When ncrep is run
-		  Then the screen output should "User: admin, Password: cisco"
+		  Then the screen output should be "User: admin, Password: cisco"
+
+	Scenario: Invalid CSV File
+		  Given the input file "badfile.csv"
+		  When ncrep is run
+		  Then the screen output should be "The CSV file must contain at least an Info column"
 
 	Scenario Outline: Find FTP Credentials
 	 	   Given the input file "<input>"
