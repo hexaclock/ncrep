@@ -20,7 +20,6 @@ class File
 	{
 		if ( ($fh = fopen($this->csvfname,'r')) )
 		{
-			echo "file opened\n";
 			while ( ($dat = fgetcsv($fh, 1000, ',')) )
 			{
 				$this->twodarr[] = $dat;
@@ -28,7 +27,6 @@ class File
 			fclose($fh);
 			if (!$this->validateArray())
 			{
-				echo "array verif failed\n";
 				$this->twodarr = array();
 				return NULL;
 			}
@@ -38,6 +36,9 @@ class File
 		return NULL;
 	}
 
+	/*
+	 *prints $this->twodarr to screen
+	*/
 	public function printPCAP()
 	{
 		if (!empty($this->twodarr))
@@ -63,7 +64,6 @@ class File
 
 		foreach ($this->twodarr[0] as $colname)
 		{
-			echo "$colname\n";
 			if ($colname == "No." || $colname == "Time" || $colname == "Source" ||
 				$colname == "Destination" || $colname == "Protocol" ||
 				$colname == "Length" || $colname == "Info")
