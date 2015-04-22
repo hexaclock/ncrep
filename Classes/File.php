@@ -19,14 +19,14 @@ class File
 			if (!validateArray())
 			{
 				$this->twodarr = array();
-				return null;
+				return NULL;
 			}
 			else
 				return $this->twodarr;
 		}
-		return null;
+		return NULL;
 	}
-	
+
 	/*
 	 *pre: requires a populated $this->twodarr
 	 *post: returns TRUE if the array meets file format reqs, FALSE if not
