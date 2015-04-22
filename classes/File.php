@@ -23,7 +23,7 @@ class File
 			while ( ($dat = fgetcsv($fh, 1000, ',')) )
 				$this->twodarr[] = $dat;
 			fclose($fh);
-			if (!validateArray())
+			if (!$this->validateArray())
 			{
 				$this->twodarr = array();
 				return NULL;
@@ -62,7 +62,7 @@ class File
 			if ($colname == "No." || $colname == "Time" || $colname == "Destination"
 				|| $colname == "Protocol" || $colname == "Length" || $colname == "Info")
 				{
-					if (!in_array($colname))
+					if (!in_array($colname,$colnames))
 						$colnames[] = $colname;
 					else
 						return FALSE;
