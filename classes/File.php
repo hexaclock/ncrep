@@ -2,16 +2,23 @@
 
 class File
 {
+	var $csvfname;
 	var $twodarr;
 
+	/* constructor */
+	public function __construct($csvfname)
+	{
+		$this->csvfname = $csvfname;
+		$this->twodarr  = array();
+	}
+	
 	/*
-	 *pre: takes a filename of a CSV packet capture as $csvfname
+	 *pre: takes a filename of a CSV packet capture from $this->csvfname
 	 *post: returns a 2d array of the parsed file if success, NULL if any failure
 	*/
-	public function parseFile($csvfname)
+	public function parseFile()
 	{
-		$this->twodarr = array();
-		if ( ($fh = fopen($csvfname,'r')) )
+		if ( ($fh = fopen($this->csvfname,'r')) )
 		{
 			while ( ($dat = fgetcsv($fh, 1000, ',')) )
 				$this->twodarr[] = $dat;
@@ -25,6 +32,21 @@ class File
 				return $this->twodarr;
 		}
 		return NULL;
+	}
+	
+	public function printPCAP()
+	{
+		if (!empty($this->twodarr))
+		{
+			foreach ($this->twodarr as $row)
+			{
+				foreach ($row as $field)
+				{
+					echo "$field ";
+				}
+				echo "\n";
+			}
+		}
 	}
 
 	/*
