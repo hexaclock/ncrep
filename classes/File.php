@@ -11,7 +11,7 @@ class File
 		$this->csvfname = $csvfname;
 		$this->twodarr  = array();
 	}
-	
+
 	/*
 	 *pre: takes a filename of a CSV packet capture from $this->csvfname
 	 *post: returns a 2d array of the parsed file if success, NULL if any failure
@@ -20,11 +20,15 @@ class File
 	{
 		if ( ($fh = fopen($this->csvfname,'r')) )
 		{
+			echo "file opened\n";
 			while ( ($dat = fgetcsv($fh, 1000, ',')) )
+			{
 				$this->twodarr[] = $dat;
+			}
 			fclose($fh);
 			if (!$this->validateArray())
 			{
+				echo "array verif failed\n";
 				$this->twodarr = array();
 				return NULL;
 			}
@@ -33,7 +37,7 @@ class File
 		}
 		return NULL;
 	}
-	
+
 	public function printPCAP()
 	{
 		if (!empty($this->twodarr))
@@ -59,8 +63,10 @@ class File
 
 		foreach ($this->twodarr[0] as $colname)
 		{
-			if ($colname == "No." || $colname == "Time" || $colname == "Destination"
-				|| $colname == "Protocol" || $colname == "Length" || $colname == "Info")
+			echo "$colname\n";
+			if ($colname == "No." || $colname == "Time" || $colname == "Source" ||
+				$colname == "Destination" || $colname == "Protocol" ||
+				$colname == "Length" || $colname == "Info")
 				{
 					if (!in_array($colname,$colnames))
 						$colnames[] = $colname;
