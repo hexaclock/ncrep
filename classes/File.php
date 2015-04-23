@@ -12,6 +12,7 @@ class File
 	{
 		$this->csvfname = $csvfname;
 		$this->twodarr  = array();
+		$this->numrows  = 0;
 	}
 
 	/*
@@ -22,9 +23,10 @@ class File
 	{
 		if ( ($fh = fopen($this->csvfname,'r')) )
 		{
-			while ( ($dat = fgetcsv($fh, 1000, ',')) )
+			while ( ($dat = fgetcsv($fh, 4096, ',')) )
 			{
 				$this->twodarr[] = $dat;
+				$this->numrows++;
 			}
 			fclose($fh);
 			if (!$this->validateArray())
@@ -78,7 +80,6 @@ class File
 	private function validateArray()
 	{
 		$colnames = array();
-		$this->numrows = sizeof($this->twodarr);
 		/* less than or equal to 1 row total */
 		if ($this->numrows <= 1)
 			return FALSE;
