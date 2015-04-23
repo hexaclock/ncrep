@@ -80,7 +80,7 @@ class File
 		$colnames = array();
 		$this->numrows = sizeof($this->twodarr);
 		/* less than or equal to 1 row total */
-		if (sizeof($this->numrows) <= 1)
+		if ($this->numrows <= 1)
 			return FALSE;
 		foreach ($this->twodarr[0] as $colname)
 		{
