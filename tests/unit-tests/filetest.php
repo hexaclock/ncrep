@@ -8,7 +8,9 @@ $g = new Statistics('./lots_of_ftp.csv');
 //if ($f->parseFile() != NULL)
 //	$f->printPCAP();
 $res = $g->getCredentials();
+$pcnt = $g->getProtocolsCount();
 //print_r($res["ftpresults"]);
+print_r($pcnt);
 print_r($res);
 
 ?>

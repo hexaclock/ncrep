@@ -18,6 +18,22 @@ class Statistics extends File
 		$this->numrows = sizeof($this->FileObj->getPCAPArray());
 	}
 
+	public function getProtocolsCount()
+	{
+		$protocounts = array();
+		$prtclcol = 4;
+		$pcaparr = $this->FileObj->getPCAPArray();
+		for ($i=1; $i<$this->numrows; $i++)
+		{
+			$proto = $pcaparr[$i][$prtclcol];
+			if (array_key_exists($proto,$protocounts))
+				$protocounts[$proto]++;
+			else
+				$protocounts[$proto] = 1;
+		}
+		return $protocounts;
+	}
+
 	public function getCredentials()
 	{
 		$pcaparr    = $this->FileObj->getPCAPArray();
