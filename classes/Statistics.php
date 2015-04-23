@@ -23,6 +23,11 @@ class Statistics extends File
 		$this->analyze();
 	}
 
+	public function getTotalPacketsCount()
+	{
+		return $this->numrows - 1;
+	}
+
 	public function getProtocolsPercent()
 	{
 		$pcts = array();
