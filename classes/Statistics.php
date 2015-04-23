@@ -19,7 +19,7 @@ class Statistics extends File
 			die("Failed to parse packet capture CSV file\n");
 		$this->colformat = $this->FileObj->getColumnFormat();
 		$this->pcaparr   = $this->FileObj->getPCAPArray();
-		$this->numrows   = sizeof($this->pcaparr);
+		$this->numrows   = $this->FileObj->getNumRows();
 		$this->analyze();
 	}
 
