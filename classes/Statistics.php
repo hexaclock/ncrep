@@ -52,6 +52,8 @@ class Statistics extends File
 					}
 				}
 			}
+			$user = "";
+			$pass = "";
 		}
 		return $results;
 	}
