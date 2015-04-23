@@ -5,7 +5,7 @@ class File
 	private $csvfname;
 	private $twodarr;
 	private $colformat = array("No.","Time","Source","Destination","Protocol","Length","Info");
-	
+
 	/* constructor */
 	public function __construct($csvfname)
 	{
@@ -59,7 +59,7 @@ class File
 	{
 		return $this->twodarr;
 	}
-	
+
 	protected function getColumnFormat()
 	{
 		return $this->colformat;
@@ -71,7 +71,9 @@ class File
 	private function validateArray()
 	{
 		$colnames = array();
-
+		/* less than or equal to 1 row total */
+		if (sizeof($this->twodarr) <= 1)
+			return FALSE;
 		foreach ($this->twodarr[0] as $colname)
 		{
 			if ($colname == "No." || $colname == "Time" || $colname == "Source" ||

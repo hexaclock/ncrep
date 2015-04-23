@@ -7,7 +7,7 @@ class Statistics extends File
 	private $FileObj;
 	private $numrows;
 	private $colformat;
-	
+
 	/* constructor */
 	public function __construct($csvfname)
 	{
@@ -17,7 +17,7 @@ class Statistics extends File
 		$this->colformat = $this->FileObj->getColumnFormat();
 		$this->numrows = sizeof($this->FileObj->getPCAPArray());
 	}
-	
+
 	public function getCredentials()
 	{
 		$pcaparr    = $this->FileObj->getPCAPArray();
@@ -44,7 +44,7 @@ class Statistics extends File
 				$user = substr($pcaparr[$i][$infocol],14);
 				for ($j=$i; $j<$this->numrows and $pass == ""; $j++)
 				{
-					if ($pcaparr[$j][2] == $src and $pcaparr[$j][3] == $dst and 
+					if ($pcaparr[$j][2] == $src and $pcaparr[$j][3] == $dst and
 					$pcaparr[$j][$prtclcol] == $proto and strpos($pcaparr[$j][$infocol],"PASS"))
 					{
 						$pass = substr($pcaparr[$j][$infocol],14);
