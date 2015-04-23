@@ -6,6 +6,9 @@ class Statistics extends File
 {
 	private $FileObj;
 	private $numrows;
+	private $pcaparr;
+	private $protocounts;
+	private $results;
 	private $colformat;
 
 	/* constructor */
@@ -15,33 +18,32 @@ class Statistics extends File
 		if ($this->FileObj->parseFile() == NULL)
 			die("Failed to parse packet capture CSV file\n");
 		$this->colformat = $this->FileObj->getColumnFormat();
-		$this->numrows = sizeof($this->FileObj->getPCAPArray());
+		$this->pcaparr   = $this->FileObj->getPCAPArray();
+		$this->numrows   = sizeof($this->pcaparr);
+		$this->analyze();
+	}
+
+	public function getProtocolsPercent()
+	{
+		$pcts = array();
+		foreach ($this->protocounts as $proto => $protocnt)
+		{
+			$pcts[$proto] = round(($protocnt / ($this->numrows - 1))*100,2);
+		}
+		return $pcts;
 	}
 
 	public function getProtocolsCount()
 	{
-		$protocounts = array();
-		$prtclcol = 4;
-		$pcaparr = $this->FileObj->getPCAPArray();
-		for ($i=1; $i<$this->numrows; $i++)
-		{
-			$proto = $pcaparr[$i][$prtclcol];
-			if (array_key_exists($proto,$protocounts))
-				$protocounts[$proto]++;
-			else
-				$protocounts[$proto] = 1;
-		}
-		return $protocounts;
+		return $this->protocounts;
 	}
 
 	public function getCredentials()
 	{
-		$pcaparr    = $this->FileObj->getPCAPArray();
-		$ftpres     = $this->getFTPResults($pcaparr);
-		return array("ftpresults"=>$ftpres);
+		return $this->results;
 	}
 
-	public function getFTPResults($pcaparr)
+	private function analyze()
 	{
 		$prtclcol = 4;
 		$infocol  = 6;
@@ -50,28 +52,31 @@ class Statistics extends File
 		$proto    = "FTP";
 		$user     = "";
 		$pass     = "";
-		$results  = array();
 		for ($i=1; $i<$this->numrows; $i++)
 		{
-			if ( $pcaparr[$i][$prtclcol] == "FTP" and strpos($pcaparr[$i][$infocol],"USER") )
+			if (!empty($this->protocounts) and array_key_exists($this->pcaparr[$i][$prtclcol],$this->protocounts))
+				$this->protocounts[$this->pcaparr[$i][$prtclcol]]++;
+			else
+				$this->protocounts[$this->pcaparr[$i][$prtclcol]] = 1;
+			if ( $this->pcaparr[$i][$prtclcol] == "FTP" and strpos($this->pcaparr[$i][$infocol],"USER") )
 			{
-				$src  = $pcaparr[$i][2];
-				$dst  = $pcaparr[$i][3];
-				$user = substr($pcaparr[$i][$infocol],14);
+				$src  = $this->pcaparr[$i][2];
+				$dst  = $this->pcaparr[$i][3];
+				$user = substr($this->pcaparr[$i][$infocol],14);
 				for ($j=$i; $j<$this->numrows and $pass == ""; $j++)
 				{
-					if ($pcaparr[$j][2] == $src and $pcaparr[$j][3] == $dst and
-					$pcaparr[$j][$prtclcol] == $proto and strpos($pcaparr[$j][$infocol],"PASS"))
+					if ($this->pcaparr[$j][2] == $src and $this->pcaparr[$j][3] == $dst and
+					$this->pcaparr[$j][$prtclcol] == $proto and strpos($this->pcaparr[$j][$infocol],"PASS"))
 					{
-						$pass = substr($pcaparr[$j][$infocol],14);
-						$results[] = array("src"=>$src,"dst"=>$dst,"proto"=>$proto,"user"=>$user,"pass"=>$pass);
+						$pass = substr($this->pcaparr[$j][$infocol],14);
+						$this->results["ftpresults"][] = array("src"=>$src,"dst"=>$dst,"proto"=>$proto,"user"=>$user,"pass"=>$pass);
 					}
 				}
 			}
 			$user = "";
 			$pass = "";
 		}
-		return $results;
+		return $this->results;
 	}
 }
 

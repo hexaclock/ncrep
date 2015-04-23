@@ -9,8 +9,10 @@ $g = new Statistics('./lots_of_ftp.csv');
 //	$f->printPCAP();
 $res = $g->getCredentials();
 $pcnt = $g->getProtocolsCount();
+$pcts = $g->getProtocolsPercent();
 //print_r($res["ftpresults"]);
 print_r($pcnt);
+print_r($pcts);
 print_r($res);
 
 ?>
