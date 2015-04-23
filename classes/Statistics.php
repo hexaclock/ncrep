@@ -5,6 +5,7 @@ require_once 'File.php';
 class Statistics extends File
 {
 	private $FileObj;
+	private $numrows;
 	private $colformat;
 	
 	/* constructor */
@@ -14,18 +15,18 @@ class Statistics extends File
 		if ($this->FileObj->parseFile() == NULL)
 			die("Failed to parse packet capture CSV file\n");
 		$this->colformat = $this->FileObj->getColumnFormat();
+		$this->numrows = sizeof($this->FileObj->getPCAPArray());
 	}
 	
 	public function getCredentials()
 	{
 		$pcaparr    = $this->FileObj->getPCAPArray();
-		$ftpresults = $this->getFTPResults($pcaparr);
-		return $ftpresults;
+		$ftpres     = $this->getFTPResults($pcaparr);
+		return array("ftpresults"=>$ftpres);
 	}
-	
+
 	public function getFTPResults($pcaparr)
 	{
-		$numrows  = sizeof($pcaparr);
 		$prtclcol = 4;
 		$infocol  = 6;
 		$src      = "";
@@ -34,14 +35,14 @@ class Statistics extends File
 		$user     = "";
 		$pass     = "";
 		$results  = array();
-		for ($i=1; $i<$numrows; $i++)
+		for ($i=1; $i<$this->numrows; $i++)
 		{
 			if ( $pcaparr[$i][$prtclcol] == "FTP" and strpos($pcaparr[$i][$infocol],"USER") )
 			{
 				$src  = $pcaparr[$i][2];
 				$dst  = $pcaparr[$i][3];
 				$user = substr($pcaparr[$i][$infocol],14);
-				for ($j=$i; $j<$numrows and $pass == ""; $j++)
+				for ($j=$i; $j<$this->numrows and $pass == ""; $j++)
 				{
 					if ($pcaparr[$j][2] == $src and $pcaparr[$j][3] == $dst and 
 					$pcaparr[$j][$prtclcol] == $proto and strpos($pcaparr[$j][$infocol],"PASS"))
