@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 
 class Database_Connector
@@ -174,3 +175,7 @@ else
 	echo "Delete failed!<br />";*/
 
 ?>
+=======
+echo "hi";
+?>
+>>>>>>> 81ad2bf0dbbcfe3c995299a4992f317a58bce07a

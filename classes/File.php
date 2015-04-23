@@ -2,8 +2,9 @@
 
 class File
 {
-	var $csvfname;
-	var $twodarr;
+	private $csvfname;
+	private $twodarr;
+	private $colformat = array("No.","Time","Source","Destination","Protocol","Length","Info");
 
 	/* constructor */
 	public function __construct($csvfname)
@@ -54,6 +55,15 @@ class File
 		}
 	}
 
+	protected function getPCAPArray()
+	{
+		return $this->twodarr;
+	}
+
+	protected function getColumnFormat()
+	{
+		return $this->colformat;
+	}
 	/*
 	 *pre: requires a populated $this->twodarr
 	 *post: returns TRUE if the array meets file format reqs, FALSE if not
@@ -61,7 +71,9 @@ class File
 	private function validateArray()
 	{
 		$colnames = array();
-
+		/* less than or equal to 1 row total */
+		if (sizeof($this->twodarr) <= 1)
+			return FALSE;
 		foreach ($this->twodarr[0] as $colname)
 		{
 			if ($colname == "No." || $colname == "Time" || $colname == "Source" ||
@@ -76,7 +88,7 @@ class File
 			else
 				return FALSE;
 		}
-		if (sizeof($colnames) != 7)
+		if ($colnames !== $this->colformat)
 			return FALSE;
 		return TRUE;
 	}
