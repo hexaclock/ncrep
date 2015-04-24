@@ -22,7 +22,7 @@
 				<p>Upload your packet capture file here, and we will report all the login information we find.</p>
 				<?php
 					if (isset($upload_error))
-						echo "<p>$upload_error</p";
+						echo "<p>".$upload_error."</p>";
 				<input type="file" name="packet" id="packet" />
 				<input type="submit" value="Upload" name="upload" />
 			</form>
