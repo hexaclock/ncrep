@@ -90,7 +90,7 @@
 					{
 						//file has been uploaded successfully
 						$file = new File($target_file);
-						printr($file->parseFile());
+						print_r($file->parseFile());
 					}
 					else
 						echo "Upload failed.";
