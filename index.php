@@ -89,8 +89,8 @@
 					else if(move_uploaded_file($_FILES["packet"]["tmp_name"], $target_file)) //attempt to move file
 					{
 						//file has been uploaded successfully
-						$file = new File($target_file);
-						print_r($file->parseFile());
+						$file_stats = new Statistics($target_file);
+						$arr3 = $file_stats->getCredentials();
 					}
 					else
 						echo "Upload failed.";
@@ -109,20 +109,22 @@
 					</tr>
 						
 				<?php
-				
-					/*foreach($arr3 as $key => $arr2)
+					if(isset($arr3)
 					{
-						foreach($arr2 as $key => $arr1)
+						foreach($arr3 as $key => $arr2)
 						{
-							echo "<tr>";
-							echo "<td>".$arr1['proto']."</td>";
-							echo "<td>".$arr1['src']."</td>";
-							echo "<td>".$arr1['dst']."</td>";
-							echo "<td>".$arr1['user']."</td>";
-							echo "<td>".$arr1['pass']."</td>";
-							echo "</tr>";
+							foreach($arr2 as $key => $arr1)
+							{
+								echo "<tr>";
+								echo "<td>".$arr1['proto']."</td>";
+								echo "<td>".$arr1['src']."</td>";
+								echo "<td>".$arr1['dst']."</td>";
+								echo "<td>".$arr1['user']."</td>";
+								echo "<td>".$arr1['pass']."</td>";
+								echo "</tr>";
+							}
 						}
-					}*/
+					}
 				
 				?>
 				</table>
