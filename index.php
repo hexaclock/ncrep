@@ -66,13 +66,20 @@
 			table.packet-info {
 				width: 80%;
 			}
+			table.packet-info th {
+				text-align: left;
+			}
+			table.packet-info th, table.packet-info td {
+				padding: 5px;
+				border: 1px solid #E0E0E0;
+			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$("table td, table th").hover(function() {
 					var i = $(this).index()+1;
-					updateTableColor(i, "#D0D0D0");
+					updateTableColor(i, "#F0F0F0");
 				}, function() {
 					var i = $(this).index()+1;
 					updateTableColor(i, "#fff");
@@ -122,8 +129,6 @@
 				}
 			?>
 			<div class="data">
-				Data goes here
-
 				<table class="packet-info">
 					<tr>
 						<th>Protocol</th>
