@@ -86,7 +86,7 @@
 				include("classes/Statistics.php");
 				if(isset($_POST['upload']))
 				{
-					$target_dir = 'temp/';
+					$target_dir = '/tmp/';
 					$target_file = $target_dir.sha1(sha1_file($_FILES["packet"]["tmp_name"]).time()); //basename($_FILES["packet"]["name"]);
 					$filetype = pathinfo($_FILES["packet"]["name"],PATHINFO_EXTENSION);
 					
@@ -101,6 +101,7 @@
 						//file has been uploaded successfully
 						$file_stats = new Statistics($target_file);
 						$arr3 = $file_stats->getCredentials();
+						//print_r($arr3);
 					}
 					else
 						echo "Upload failed.";
@@ -140,6 +141,7 @@
 				</table>
 			</div>
 		</div>
+	<!--
 		<div class="side">
 			<!--Login?
 			<form>
@@ -148,5 +150,6 @@
 				<input type="submit" value="Login" />
 			</form>-->
 		</div>
+	-->
 	</body>
 </html>
