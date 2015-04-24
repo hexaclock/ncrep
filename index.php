@@ -1,97 +1,19 @@
 <html>
 	<head>
 		<title>ncrep</title>
-		<style type="text/css">
-			/**** BEGIN RESET ****/
-			html, body, div, span, applet, object, iframe,
-			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-			a, abbr, acronym, address, big, cite, code,
-			del, dfn, em, img, ins, kbd, q, s, samp,
-			small, strike, strong, sub, sup, tt, var,
-			b, u, i, center,
-			dl, dt, dd, ol, ul, li,
-			fieldset, form, label, legend,
-			table, caption, tbody, tfoot, thead, tr, th, td,
-			article, aside, canvas, details, embed, 
-			figure, figcaption, footer, header, hgroup, 
-			menu, nav, output, ruby, section, summary,
-			time, mark, audio, video {
-				margin: 0;
-				padding: 0;
-				border: 0;
-				/*font-size: 100%;
-				font: inherit;*/
-				vertical-align: baseline;
-			}
-			/* HTML5 display-role reset for older browsers */
-			article, aside, details, figcaption, figure, 
-			footer, header, hgroup, menu, nav, section {
-				display: block;
-			}
-			body {
-				line-height: 1;
-			}
-			ol, ul {
-				list-style: none;
-			}
-			blockquote, q {
-				quotes: none;
-			}
-			blockquote:before, blockquote:after,
-			q:before, q:after {
-				content: '';
-				content: none;
-			}
-			table {
-				border-collapse: collapse;
-				border-spacing: 0;
-			}
-			/**** END RESET ****/
-			* {
-				-webkit-box-sizing: border-box;
-				-moz-box-sizing: border-box;
-				box-sizing: border-box;
-			}
-			div {
-				padding: 10px;
-			}
-			div.content {
-				width: 80%;
-				float: left;
-			}
-			div.side {
-				width: 20%;
-				float: left;
-			}
-			table.packet-info {
-				width: 80%;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script type="text/javascript">
-			$(function() {
-				$("table td, table th").hover(function() {
-					var i = $(this).index()+1;
-					updateTableColor(i, "#D0D0D0");
-				}, function() {
-					var i = $(this).index()+1;
-					updateTableColor(i, "#fff");
-				});
-				
-			});
-			
-			function updateTableColor(n, color)
-				{
-					$("table th:nth-child("+n+")").css("background-color", color);
-					$("table tr td:nth-child("+n+")").each( function () {
-						$(this).css("background-color", color);
-					});
-				}
-		</script>
+		<script src="js/main.js"></script>
 	</head>
 	<body>
+		<div class="title">
+			<h2>ncrep</h2>
+		</div>
 		<div class="content">
 			<form action='./' method='post' enctype='multipart/form-data'>
+				<p>Upload your packet capture file here, and we will report all the login information we find.</p>
 				<input type="file" name="packet" id="packet" />
 				<input type="submit" value="Upload" name="upload" />
 			</form>
@@ -122,8 +44,6 @@
 				}
 			?>
 			<div class="data">
-				Data goes here
-
 				<table class="packet-info">
 					<tr>
 						<th>Protocol</th>

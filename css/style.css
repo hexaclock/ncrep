@@ -1,0 +1,32 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+div {
+	padding: 10px;
+}
+div.content {
+	width: 80%;
+	float: left;
+}
+div.content p {
+	margin: 5px 0;
+}
+div.content form {
+	margin-bottom: 10px;
+}
+div.side {
+	width: 20%;
+	float: left;
+}
+table.packet-info {
+	width: 80%;
+}
+table.packet-info th {
+	text-align: left;
+}
+table.packet-info th, table.packet-info td {
+	padding: 5px;
+	border: 1px solid #D8D8D8;
+}
