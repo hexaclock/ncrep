@@ -16,6 +16,7 @@
 		<div class="title">
 			<h2>ncrep</h2>
 		</div>
+		
 		<div class="content">
 			<form action='./' method='post' enctype='multipart/form-data'>
 				<p>Upload your packet capture file here, and we will report all the login information we find.</p>
@@ -32,21 +33,16 @@
 						<th>Username</th>
 						<th>Password</th>
 					</tr>
-				<?php
-					if (isset($file_stats))
-						$file_stats->displayCredentialsTable();
-				?>
+					<?php
+						if (isset($file_stats))
+							$file_stats->displayCredentialsTable();
+					?>
 				</table>
 			</div>
 		</div>
-	<!--
+		
 		<div class="side">
-			<!--Login?
-			<form>
-				<input type="text" name="user" placeholder="Username" /><br />
-				<input type="password" name="passwd" placeholder="Password" /><br />
-				<input type="submit" value="Login" />
-			</form>
-		</div>-->
+		
+		</div>
 	</body>
 </html>
