@@ -67,11 +67,32 @@
 	</head>
 	<body>
 		<div class="content">
-			<form>
+			<form action='./' method='post'>
 				<input type="file" name="packet" />
-				<input type="submit" value="Upload" />
+				<input type="submit" value="Upload" name="upload" />
 			</form>
-			
+			<?php
+				$target_dir = 'tmp/';
+				$target_file = $target_dir.basename($_FILES["packet"]["name"]);
+				$filetype = pathinfo($target_file,PATHINFO_EXTENSION);
+				if(isset($_POST['upload']))
+				{
+					if(file_exits($target_file)) //if file exists then fail
+						echo "File already exists.";
+					else if($_FILES["packet"]["size"] > 10000000) //if file is bigger than 10mb then fail
+						echo "File is too big.";
+					else if($filetype != "csv") //if the file is not CSV then fail
+						echo "CSV files only.";
+					else if(move_uploaded_file($_FILES["packet"]["tmp_name"], $target_file)) //attempt to move file
+					{
+						//file has been uploaded successfully
+						$file = new File($target_file);
+						printr($file->parseFile());
+					}
+					else
+						echo "Upload failed.";
+				}
+			?>
 			<div class="data">
 				Data goes here
 
