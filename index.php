@@ -53,7 +53,8 @@
 						<th>Password</th>
 					</tr>
 				<?php
-					$file_stats->displayCredentialsTable();
+					if (isset($file_stats))
+						$file_stats->displayCredentialsTable();
 				?>
 				</table>
 			</div>
