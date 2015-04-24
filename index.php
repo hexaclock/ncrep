@@ -1,5 +1,4 @@
 <html>
-<<<<<<< HEAD
 	<head>
 		<title>ncrep</title>
 		<style type="text/css">
@@ -114,12 +113,4 @@
 			</form>
 		</div>
 	</body>
-=======
-<head></head>
-<body>
-<?php
-echo "ncrep";
-?>
-</body>
->>>>>>> 8cdaf5f30c5ae4da437c65aec459028afe58caf2
 </html>
