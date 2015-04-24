@@ -3,7 +3,7 @@
 		<title>ncrep</title>
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/main.js"></script>
 	</head>
@@ -25,7 +25,7 @@
 					$target_dir = '/tmp/';
 					$target_file = $target_dir.sha1(sha1_file($_FILES["packet"]["tmp_name"]).time()); //basename($_FILES["packet"]["name"]);
 					$filetype = pathinfo($_FILES["packet"]["name"],PATHINFO_EXTENSION);
-					
+
 					if(file_exists($target_file)) //if file exists then fail
 						echo "File already exists.";
 					else if($_FILES["packet"]["size"] > 10000000) //if file is bigger than 10mb then fail
@@ -36,7 +36,7 @@
 					{
 						//file has been uploaded successfully
 						$file_stats = new Statistics($target_file);
-						$arr3 = $file_stats->getCredentials();
+						//$arr3 = $file_stats->getCredentials();
 						//print_r($arr3);
 					}
 					else
@@ -52,25 +52,8 @@
 						<th>Username</th>
 						<th>Password</th>
 					</tr>
-						
 				<?php
-					if(isset($arr3))
-					{
-						foreach($arr3 as $key => $arr2)
-						{
-							foreach($arr2 as $key => $arr1)
-							{
-								echo "<tr>";
-								echo "<td>".$arr1['proto']."</td>";
-								echo "<td>".$arr1['src']."</td>";
-								echo "<td>".$arr1['dst']."</td>";
-								echo "<td>".$arr1['user']."</td>";
-								echo "<td>".$arr1['pass']."</td>";
-								echo "</tr>";
-							}
-						}
-					}
-				
+					$file_stats->displayCredentialsTable();
 				?>
 				</table>
 			</div>

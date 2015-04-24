@@ -24,7 +24,25 @@ class Statistics extends File
 		$this->numrows   = $this->FileObj->getNumRows();
 		$this->analyze();
 	}
-
+	public function displayCredentialsTable()
+	{
+		if(isset($this->results))
+                {
+			foreach($this->results as $key => $arr2)
+                        {
+                        	foreach($arr2 as $key => $arr1)
+                                {
+                                	echo "<tr>";
+                                        echo "<td>".$this->results['proto']."</td>";
+                                        echo "<td>".$this->results['src']."</td>";
+                                        echo "<td>".$this->results['dst']."</td>";
+                                        echo "<td>".$this->results['user']."</td>";
+                                        echo "<td>".$this->results['pass']."</td>";
+                                        echo "</tr>";
+                                }
+                         }
+                 }
+	}
 	/*
 	 *pre: takes an IP address as a string
 	 *post: returns the number of times the IP address appeared as the source
