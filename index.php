@@ -109,7 +109,7 @@
 					</tr>
 						
 				<?php
-					if(isset($arr3)
+					if(isset($arr3))
 					{
 						foreach($arr3 as $key => $arr2)
 						{
