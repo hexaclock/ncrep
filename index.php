@@ -64,6 +64,16 @@
 				float: left;
 			}
 		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			$("table td").hover(function() {
+				var i = $(this).index();
+				$("table tr td:nth-child("+i+")").each( function () {
+					console.log($(this).text());
+				});
+		});
+		</script>
 	</head>
 	<body>
 		<div class="content">
@@ -131,12 +141,12 @@
 			</div>
 		</div>
 		<div class="side">
-			Login?
+			<!--Login?
 			<form>
 				<input type="text" name="user" placeholder="Username" /><br />
 				<input type="password" name="passwd" placeholder="Password" /><br />
 				<input type="submit" value="Login" />
-			</form>
+			</form>-->
 		</div>
 	</body>
 </html>
