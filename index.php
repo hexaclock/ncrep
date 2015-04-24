@@ -66,13 +66,24 @@
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript">
-		$(function() {
-			$("table td").hover(function() {
-				var i = $(this).index();
-				$("table tr td:nth-child("+i+")").each( function () {
-					console.log($(this).text());
+			$(function() {
+				$("table td, table th").hover(function() {
+					var i = $(this).index()+1;
+					updateTableColor(i, "#A8A8A8");
+				}, function() {
+					var i = $(this).index()+1;
+					updateTableColor(i, "#fff");
 				});
-		});
+				
+			});
+			
+			function updateTableColor(n, color)
+				{
+					$("table th:nth-child("+n+")").css("background-color", color);
+					$("table tr td:nth-child("+n+")").each( function () {
+						$(this).css("background-color", color);
+					});
+				}
 		</script>
 	</head>
 	<body>
@@ -148,8 +159,7 @@
 				<input type="text" name="user" placeholder="Username" /><br />
 				<input type="password" name="passwd" placeholder="Password" /><br />
 				<input type="submit" value="Login" />
-			</form>-->
-		</div>
-	-->
+			</form>
+		</div>-->
 	</body>
 </html>
