@@ -8,6 +8,8 @@ class Statistics extends File
 	private $numrows;
 	private $pcaparr;
 	private $protocounts;
+	private $srcipcounts;
+	private $dstipcounts;
 	private $results;
 	private $colformat;
 
@@ -23,11 +25,44 @@ class Statistics extends File
 		$this->analyze();
 	}
 
+	/*
+	 *pre: takes an IP address as a string
+	 *post: returns the number of times the IP address appeared as the source
+	*/
+	public function getSrcCountForIP($ipaddr)
+	{
+		return $this->srcipcounts[$ipaddr];
+	}
+
+	/*
+	 *pre: takes an IP address as a string
+	 *post: returns the number of times the IP address appeared the destination
+	*/
+	public function getDstCountForIP($ipaddr)
+	{
+		return $this->dstipcounts[$ipaddr];
+	}
+
+	/*
+	 *pre: takes an IP address as a string
+	 *post: returns number of times the IP address appeared as src or dst
+	*/
+	public function getTotalCountForIP($ipaddr)
+	{
+		return $this->getSrcCountForIP($ipaddr) + $this->getDstCountForIP($ipaddr);
+	}
+
+	/*
+	 *returns the number of packet dissections read in from the CSV file
+	*/
 	public function getTotalPacketsCount()
 	{
 		return $this->numrows - 1;
 	}
 
+	/*
+	 *returns an array of protocols mapped to percents of the total number of packets read
+	*/
 	public function getProtocolsPercent()
 	{
 		$pcts = array();
@@ -38,16 +73,26 @@ class Statistics extends File
 		return $pcts;
 	}
 
+	/*
+	 *returns an array of protocols mapped to times we saw the protocol
+	*/
 	public function getProtocolsCount()
 	{
 		return $this->protocounts;
 	}
 
+	/*
+	 *returns a 3D array of credentials found for each protocol
+	*/
 	public function getCredentials()
 	{
 		return $this->results;
 	}
 
+	/*
+	 *this function is called from the constructor.
+	 *it automatically populates the appropriate data members with stats on pcap data.
+	*/
 	private function analyze()
 	{
 		$prtclcol = 4;
@@ -63,6 +108,17 @@ class Statistics extends File
 				$this->protocounts[$this->pcaparr[$i][$prtclcol]]++;
 			else
 				$this->protocounts[$this->pcaparr[$i][$prtclcol]] = 1;
+
+			if (!empty($this->srcipcounts) and array_key_exists($this->pcaparr[$i][2],$this->srcipcounts))
+				$this->srcipcounts[$this->pcaparr[$i][2]]++;
+			else
+				$this->srcipcounts[$this->pcaparr[$i][2]] = 1;
+
+			if (!empty($this->dstipcounts) and array_key_exists($this->pcaparr[$i][3],$this->dstipcounts))
+				$this->dstipcounts[$this->pcaparr[$i][3]]++;
+			else
+				$this->dstipcounts[$this->pcaparr[$i][3]] = 1;
+
 			if ( $this->pcaparr[$i][$prtclcol] == "FTP" and strpos($this->pcaparr[$i][$infocol],"USER") )
 			{
 				$src  = $this->pcaparr[$i][2];
