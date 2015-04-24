@@ -76,7 +76,7 @@
 				include("classes/Statistics.php");
 				if(isset($_POST['upload']))
 				{
-					$target_dir = 'temp/';
+					$target_dir = '/tmp/';
 					$target_file = $target_dir.sha1(sha1_file($_FILES["packet"]["tmp_name"]).time()); //basename($_FILES["packet"]["name"]);
 					$filetype = pathinfo($_FILES["packet"]["name"],PATHINFO_EXTENSION);
 					
@@ -130,6 +130,7 @@
 				</table>
 			</div>
 		</div>
+	<!--
 		<div class="side">
 			Login?
 			<form>
@@ -138,5 +139,6 @@
 				<input type="submit" value="Login" />
 			</form>
 		</div>
+	-->
 	</body>
 </html>
