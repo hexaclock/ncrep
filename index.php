@@ -48,10 +48,13 @@
 						if(isset($file_stats))
 						{
 							$perc_arr = $file_stats->getProtocolsPercent();
-							print_r($perc_arr);
+							i = 1;
 							foreach($perc_arr as $key => $value)
 							{
-								echo "<strong>$key</strong> : $value";
+								echo "<strong>$key</strong> : $value || ";
+								if((i % 4) == 0)
+									echo "<br />";
+								i++;
 							}
 						}
 					?>
