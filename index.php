@@ -67,8 +67,8 @@
 	</head>
 	<body>
 		<div class="content">
-			<form action='./' method='post'>
-				<input type="file" name="packet" />
+			<form action='./' method='post' enctype='multipart/form-data'>
+				<input type="file" name="packet" id="packet" />
 				<input type="submit" value="Upload" name="upload" />
 			</form>
 			<?php
@@ -79,7 +79,7 @@
 					$target_file = $target_dir.basename($_FILES["packet"]["name"]);
 					$filetype = pathinfo($target_file,PATHINFO_EXTENSION);
 					
-					if(file_exits($target_file)) //if file exists then fail
+					if(file_exists($target_file)) //if file exists then fail
 						echo "File already exists.";
 					else if($_FILES["packet"]["size"] > 10000000) //if file is bigger than 10mb then fail
 						echo "File is too big.";
