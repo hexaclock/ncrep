@@ -73,12 +73,12 @@
 			</form>
 			<?php
 				ini_set('display_errors',1);  error_reporting(E_ALL);
-				
-				$target_dir = 'tmp/';
-				$target_file = $target_dir.basename($_FILES["packet"]["name"]);
-				$filetype = pathinfo($target_file,PATHINFO_EXTENSION);
 				if(isset($_POST['upload']))
 				{
+					$target_dir = 'tmp/';
+					$target_file = $target_dir.basename($_FILES["packet"]["name"]);
+					$filetype = pathinfo($target_file,PATHINFO_EXTENSION);
+					
 					if(file_exits($target_file)) //if file exists then fail
 						echo "File already exists.";
 					else if($_FILES["packet"]["size"] > 10000000) //if file is bigger than 10mb then fail
@@ -109,7 +109,7 @@
 						
 				<?php
 				
-					foreach($arr3 as $key => $arr2)
+					/*foreach($arr3 as $key => $arr2)
 					{
 						foreach($arr2 as $key => $arr1)
 						{
@@ -121,7 +121,7 @@
 							echo "<td>".$arr1['pass']."</td>";
 							echo "</tr>";
 						}
-					}
+					}*/
 				
 				?>
 				</table>
