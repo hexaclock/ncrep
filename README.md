@@ -17,4 +17,4 @@ Sean Loveall & Daniel Vinakovsky
 
 * Enter the following command: "php filetest.php"
 
-* Observe the output from the unit tests,
+* Observe the output from the unit tests
