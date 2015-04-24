@@ -21,7 +21,7 @@ class File
 	*/
 	public function parseFile()
 	{
-		if ( ($fh = fopen($this->csvfname,'r')) )
+		if ( filesize($this->csvfname) < 10000000 and ($fh = fopen($this->csvfname,'r')) )
 		{
 			while ( ($dat = fgetcsv($fh, 4096, ',')) )
 			{
