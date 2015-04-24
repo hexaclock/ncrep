@@ -63,13 +63,16 @@
 				width: 20%;
 				float: left;
 			}
+			table.packet-info {
+				width: 80%;
+			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$("table td, table th").hover(function() {
 					var i = $(this).index()+1;
-					updateTableColor(i, "#A8A8A8");
+					updateTableColor(i, "#D0D0D0");
 				}, function() {
 					var i = $(this).index()+1;
 					updateTableColor(i, "#fff");
@@ -121,7 +124,7 @@
 			<div class="data">
 				Data goes here
 
-				<table>
+				<table class="packet-info">
 					<tr>
 						<th>Protocol</th>
 						<th>Source</th>
