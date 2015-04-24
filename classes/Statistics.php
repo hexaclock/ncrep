@@ -33,11 +33,11 @@ class Statistics extends File
                         	foreach($arr2 as $key => $arr1)
                                 {
                                 	echo "<tr>";
-                                        echo "<td>".$this->results['proto']."</td>";
-                                        echo "<td>".$this->results['src']."</td>";
-                                        echo "<td>".$this->results['dst']."</td>";
-                                        echo "<td>".$this->results['user']."</td>";
-                                        echo "<td>".$this->results['pass']."</td>";
+                                        echo "<td>".$arr2['proto']."</td>";
+                                        echo "<td>".$arr2['src']."</td>";
+                                        echo "<td>".$arr2['dst']."</td>";
+                                        echo "<td>".$arr2['user']."</td>";
+                                        echo "<td>".$arr2['pass']."</td>";
                                         echo "</tr>";
                                 }
                          }
