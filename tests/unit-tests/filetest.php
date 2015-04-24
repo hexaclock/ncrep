@@ -39,8 +39,9 @@ else
 	echo "Total count for IP address 192.168.2.20 failed!\n";
 
 if ($ipcnt - $g->getSrcCountForIP("192.168.2.20") == $g->getDstCountForIP("192.168.2.20"))
-	echo "Basic IP address count arithmetic passed!\n";
+	echo "IP address count arithmetic passed!\n";
 else
-	echo "Basic IP address count arithmetic failed!\n";
+	echo "IP address count arithmetic failed!\n";
+
 
 ?>
