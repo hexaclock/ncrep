@@ -75,7 +75,7 @@
 				ini_set('display_errors',1);  error_reporting(E_ALL);
 				if(isset($_POST['upload']))
 				{
-					$target_dir = 'tmp/';
+					$target_dir = 'temp/';
 					$target_file = $target_dir.basename($_FILES["packet"]["name"]);
 					$filetype = pathinfo($target_file,PATHINFO_EXTENSION);
 					
