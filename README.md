@@ -3,9 +3,10 @@ Sean Loveall & Daniel Vinakovsky
 
 **How to run ncrep:**
 
-* Visit http://dev.gnurds.com/ncrep
+* Click [here] (http://dev.gnurds.com/ncrep)
 
-* Upload a valid CSV file of packet dissections from Wireshark/other (one is available at tests/unit-tests/lots_of_ftp.csv).
+* Upload a valid CSV file of packet dissections from Wireshark/other.
+* * example available at tests/unit-tests/lots_of_ftp.csv
 
 * Click Submit, and observe the output.
 
@@ -17,4 +18,4 @@ Sean Loveall & Daniel Vinakovsky
 
 * Enter the following command: "php filetest.php"
 
-* Observe the output from the unit tests
+* Observe the output from the unit tests.
