@@ -6,7 +6,7 @@ Sean Loveall & Daniel Vinakovsky
 * Click [here] (http://dev.gnurds.com/ncrep)
 
 * Upload a valid CSV file of packet dissections from Wireshark/other.
-* * example available at tests/unit-tests/lots_of_ftp.csv
+ * An example is available at tests/unit-tests/lots_of_ftp.csv
 
 * Click Submit, and observe the output.
 
