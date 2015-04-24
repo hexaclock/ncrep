@@ -12,7 +12,7 @@ Sean Loveall & Daniel Vinakovsky
 
 **How to run ncrep-cli:**
 
-* Run "php ncrep-cli.php <list of CSV packet capture files>"
+* Run "php ncrep-cli.php [list of CSV packet capture files]"
 
 * Observe the output.
 
