@@ -42,6 +42,19 @@
 							$file_stats->displayCredentialsTable();
 					?>
 				</table>
+				
+				<div class="stats">
+					<?php
+						if(isset($file_stats))
+						{
+							$perc_arr = $file_stats->getProtocolsPercent();
+							foreach($perc_arr as $key => $value)
+							{
+								echo "<strong>$key</strong> : $value";
+							}
+						}
+					?>
+				</div>
 			</div>
 		</div>
 		
