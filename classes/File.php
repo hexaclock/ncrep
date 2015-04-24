@@ -4,6 +4,7 @@ class File
 {
 	private $csvfname;
 	private $twodarr;
+	private $numrows;
 	private $colformat = array("No.","Time","Source","Destination","Protocol","Length","Info");
 
 	/* constructor */
@@ -11,6 +12,7 @@ class File
 	{
 		$this->csvfname = $csvfname;
 		$this->twodarr  = array();
+		$this->numrows  = 0;
 	}
 
 	/*
@@ -19,16 +21,18 @@ class File
 	*/
 	public function parseFile()
 	{
-		if ( ($fh = fopen($this->csvfname,'r')) )
+		if ( filesize($this->csvfname) < 10000000 and ($fh = fopen($this->csvfname,'r')) )
 		{
-			while ( ($dat = fgetcsv($fh, 1000, ',')) )
+			while ( ($dat = fgetcsv($fh, 4096, ',')) )
 			{
 				$this->twodarr[] = $dat;
+				$this->numrows++;
 			}
 			fclose($fh);
 			if (!$this->validateArray())
 			{
 				$this->twodarr = array();
+				$this->numrows = 0;
 				return NULL;
 			}
 			else
@@ -60,6 +64,11 @@ class File
 		return $this->twodarr;
 	}
 
+	protected function getNumRows()
+	{
+		return $this->numrows;
+	}
+
 	protected function getColumnFormat()
 	{
 		return $this->colformat;
@@ -72,7 +81,7 @@ class File
 	{
 		$colnames = array();
 		/* less than or equal to 1 row total */
-		if (sizeof($this->twodarr) <= 1)
+		if ($this->numrows <= 1)
 			return FALSE;
 		foreach ($this->twodarr[0] as $colname)
 		{

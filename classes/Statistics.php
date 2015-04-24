@@ -6,6 +6,11 @@ class Statistics extends File
 {
 	private $FileObj;
 	private $numrows;
+	private $pcaparr;
+	private $protocounts;
+	private $srcipcounts;
+	private $dstipcounts;
+	private $results;
 	private $colformat;
 
 	/* constructor */
@@ -15,17 +20,80 @@ class Statistics extends File
 		if ($this->FileObj->parseFile() == NULL)
 			die("Failed to parse packet capture CSV file\n");
 		$this->colformat = $this->FileObj->getColumnFormat();
-		$this->numrows = sizeof($this->FileObj->getPCAPArray());
+		$this->pcaparr   = $this->FileObj->getPCAPArray();
+		$this->numrows   = $this->FileObj->getNumRows();
+		$this->analyze();
 	}
 
+	/*
+	 *pre: takes an IP address as a string
+	 *post: returns the number of times the IP address appeared as the source
+	*/
+	public function getSrcCountForIP($ipaddr)
+	{
+		return $this->srcipcounts[$ipaddr];
+	}
+
+	/*
+	 *pre: takes an IP address as a string
+	 *post: returns the number of times the IP address appeared the destination
+	*/
+	public function getDstCountForIP($ipaddr)
+	{
+		return $this->dstipcounts[$ipaddr];
+	}
+
+	/*
+	 *pre: takes an IP address as a string
+	 *post: returns number of times the IP address appeared as src or dst
+	*/
+	public function getTotalCountForIP($ipaddr)
+	{
+		return $this->getSrcCountForIP($ipaddr) + $this->getDstCountForIP($ipaddr);
+	}
+
+	/*
+	 *returns the number of packet dissections read in from the CSV file
+	*/
+	public function getTotalPacketsCount()
+	{
+		return $this->numrows - 1;
+	}
+
+	/*
+	 *returns an array of protocols mapped to percents of the total number of packets read
+	*/
+	public function getProtocolsPercent()
+	{
+		$pcts = array();
+		foreach ($this->protocounts as $proto => $protocnt)
+		{
+			$pcts[$proto] = round(($protocnt / ($this->numrows - 1))*100,2);
+		}
+		return $pcts;
+	}
+
+	/*
+	 *returns an array of protocols mapped to times we saw the protocol
+	*/
+	public function getProtocolsCount()
+	{
+		return $this->protocounts;
+	}
+
+	/*
+	 *returns a 3D array of credentials found for each protocol
+	*/
 	public function getCredentials()
 	{
-		$pcaparr    = $this->FileObj->getPCAPArray();
-		$ftpres     = $this->getFTPResults($pcaparr);
-		return array("ftpresults"=>$ftpres);
+		return $this->results;
 	}
 
-	public function getFTPResults($pcaparr)
+	/*
+	 *this function is called from the constructor.
+	 *it automatically populates the appropriate data members with stats on pcap data.
+	*/
+	private function analyze()
 	{
 		$prtclcol = 4;
 		$infocol  = 6;
@@ -34,28 +102,42 @@ class Statistics extends File
 		$proto    = "FTP";
 		$user     = "";
 		$pass     = "";
-		$results  = array();
 		for ($i=1; $i<$this->numrows; $i++)
 		{
-			if ( $pcaparr[$i][$prtclcol] == "FTP" and strpos($pcaparr[$i][$infocol],"USER") )
+			if (!empty($this->protocounts) and array_key_exists($this->pcaparr[$i][$prtclcol],$this->protocounts))
+				$this->protocounts[$this->pcaparr[$i][$prtclcol]]++;
+			else
+				$this->protocounts[$this->pcaparr[$i][$prtclcol]] = 1;
+
+			if (!empty($this->srcipcounts) and array_key_exists($this->pcaparr[$i][2],$this->srcipcounts))
+				$this->srcipcounts[$this->pcaparr[$i][2]]++;
+			else
+				$this->srcipcounts[$this->pcaparr[$i][2]] = 1;
+
+			if (!empty($this->dstipcounts) and array_key_exists($this->pcaparr[$i][3],$this->dstipcounts))
+				$this->dstipcounts[$this->pcaparr[$i][3]]++;
+			else
+				$this->dstipcounts[$this->pcaparr[$i][3]] = 1;
+
+			if ( $this->pcaparr[$i][$prtclcol] == "FTP" and strpos($this->pcaparr[$i][$infocol],"USER") )
 			{
-				$src  = $pcaparr[$i][2];
-				$dst  = $pcaparr[$i][3];
-				$user = substr($pcaparr[$i][$infocol],14);
+				$src  = $this->pcaparr[$i][2];
+				$dst  = $this->pcaparr[$i][3];
+				$user = substr($this->pcaparr[$i][$infocol],14);
 				for ($j=$i; $j<$this->numrows and $pass == ""; $j++)
 				{
-					if ($pcaparr[$j][2] == $src and $pcaparr[$j][3] == $dst and
-					$pcaparr[$j][$prtclcol] == $proto and strpos($pcaparr[$j][$infocol],"PASS"))
+					if ($this->pcaparr[$j][2] == $src and $this->pcaparr[$j][3] == $dst and
+					$this->pcaparr[$j][$prtclcol] == $proto and strpos($this->pcaparr[$j][$infocol],"PASS"))
 					{
-						$pass = substr($pcaparr[$j][$infocol],14);
-						$results[] = array("src"=>$src,"dst"=>$dst,"proto"=>$proto,"user"=>$user,"pass"=>$pass);
+						$pass = substr($this->pcaparr[$j][$infocol],14);
+						$this->results["ftpresults"][] = array("src"=>$src,"dst"=>$dst,"proto"=>$proto,"user"=>$user,"pass"=>$pass);
 					}
 				}
 			}
 			$user = "";
 			$pass = "";
 		}
-		return $results;
+		return $this->results;
 	}
 }
 
