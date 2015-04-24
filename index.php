@@ -77,7 +77,7 @@
 				if(isset($_POST['upload']))
 				{
 					$target_dir = 'temp/';
-					$target_file = $target_dir.basename($_FILES["packet"]["name"]);
+					$target_file = $target_dir.sha1_file($_FILES["packet"]["tmp_name"]); //basename($_FILES["packet"]["name"]);
 					$filetype = pathinfo($target_file,PATHINFO_EXTENSION);
 					
 					if(file_exists($target_file)) //if file exists then fail
