@@ -10,6 +10,12 @@ Sean Loveall & Daniel Vinakovsky
 
 * Click Submit, and observe the output.
 
+**How to run ncrep-cli:**
+
+* Run "php ncrep-cli.php <list of CSV packet capture files>"
+
+* Observe the output.
+
 **How to run the unit tests:**
 
 * Clone this repository into a directory on the Stevens Linux Lab cluster/any Linux box with PHP5 installed.
