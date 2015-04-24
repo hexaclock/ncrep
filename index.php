@@ -59,6 +59,12 @@
 				width: 80%;
 				float: left;
 			}
+			div.content p {
+				margin: 5px 0;
+			}
+			div.content form {
+				margin-bottom: 10px;
+			}
 			div.side {
 				width: 20%;
 				float: left;
