@@ -72,6 +72,8 @@
 				<input type="submit" value="Upload" name="upload" />
 			</form>
 			<?php
+				ini_set('display_errors',1);  error_reporting(E_ALL);
+				
 				$target_dir = 'tmp/';
 				$target_file = $target_dir.basename($_FILES["packet"]["name"]);
 				$filetype = pathinfo($target_file,PATHINFO_EXTENSION);
