@@ -71,7 +71,7 @@
 			}
 			table.packet-info th, table.packet-info td {
 				padding: 5px;
-				border: 1px solid #E0E0E0;
+				border: 1px solid #D8D8D8;
 			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -79,7 +79,7 @@
 			$(function() {
 				$("table td, table th").hover(function() {
 					var i = $(this).index()+1;
-					updateTableColor(i, "#F0F0F0");
+					updateTableColor(i, "#E8E8E8");
 				}, function() {
 					var i = $(this).index()+1;
 					updateTableColor(i, "#fff");
@@ -97,8 +97,12 @@
 		</script>
 	</head>
 	<body>
+		<div class="title">
+			<h2>ncrep</h2>
+		</div>
 		<div class="content">
 			<form action='./' method='post' enctype='multipart/form-data'>
+				<p>Upload your packet capture file here, and we will report all the login information we find.</p>
 				<input type="file" name="packet" id="packet" />
 				<input type="submit" value="Upload" name="upload" />
 			</form>
