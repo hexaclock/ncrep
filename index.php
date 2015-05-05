@@ -20,7 +20,7 @@
 			  .pie {
 					position:absolute;
 					width:100px;
-					height:215px;
+					height:220px;
 					overflow:hidden;
 					left:150px;
 					-moz-transform-origin:left center;
