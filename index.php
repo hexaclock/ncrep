@@ -179,7 +179,7 @@
 					var rules = " "+
 						"-moz-transform: "+perctext+";"+
 						"-ms-transform: "+perctext+";"+
-						"-webkit-trandform: "+perctext+";"+
+						"-webkit-transform: "+perctext+";"+
 						"-o-transform: "+perctext+";"+
 						"transform: "+perctext+";"+
 						" ";
