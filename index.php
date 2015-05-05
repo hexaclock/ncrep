@@ -172,11 +172,11 @@
 					});
 					// workaround to manipulate pseudo-elements
 					var rules = " "+
-						"-moz-transform: "+starttext+";"+
-						"-ms-transform: "+starttext+";"+
-						"-webkit-trandform: "+starttext+";"+
-						"-o-transform: "+starttext+";"+
-						"transform: "+starttext+";"+
+						"-moz-transform: "+perctext+";"+
+						"-ms-transform: "+perctext+";"+
+						"-webkit-trandform: "+perctext+";"+
+						"-o-transform: "+perctext+";"+
+						"transform: "+perctext+";"+
 						" ";
 					var selector = ".pie[data-value='"+(perc-1)+"']";
 					$('<style>'+selector+':before{'+rules+'}</style>').appendTo('head');
