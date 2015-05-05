@@ -20,7 +20,7 @@
 			  .pie {
 					position:absolute;
 					width:100px;
-					height:200px;
+					height:215px;
 					overflow:hidden;
 					left:150px;
 					-moz-transform-origin:left center;
@@ -39,7 +39,7 @@
 			*/
 				.pie.big {
 					width:200px;
-					height:200px;
+					height:219px;
 					left:50px;
 					-moz-transform-origin:center center;
 					-ms-transform-origin:center center;
@@ -158,10 +158,15 @@
 		</style>
 		<script type='text/javascript'>
 			$(function() {
-				$("div.pie").each(function() {
+				var pies = $("div.pie");
+				var numpies = pies.length;
+				var i = 1;
+				pies.each(function() {
 					start = parseInt($(this).attr("data-start"));
 					starttext = "rotate("+start+"deg)";
-					perc = parseInt($(this).attr("data-value")) + 1;
+					perc = parseInt($(this).attr("data-value"));
+					if(i < numpies)
+						perc++;
 					perctext = "rotate("+perc+"deg)";
 					$(this).css({
 						"-moz-transform": starttext, /* Firefox */
@@ -178,8 +183,11 @@
 						"-o-transform: "+perctext+";"+
 						"transform: "+perctext+";"+
 						" ";
+					if(i == numpies)
+						perc++;
 					var selector = ".pie[data-value='"+(perc-1)+"']";
 					$('<style>'+selector+':before{'+rules+'}</style>').appendTo('head');
+					i++;
 				});
 			});
 		</script>
