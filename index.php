@@ -247,11 +247,12 @@
 							$start = 0;
 							foreach($perc_arr as $key => $value)
 							{
+								$perc = 360 * $value;
 								$class = "pie";
-								if($value > 180)
-									$value .= " big";
-								echo "<div class='pie' data-start='$start' data-value='$value'></div>";
-								$start += $value;
+								if($perc > 180)
+									$class .= " big";
+								echo "<div class='pie' data-start='$start' data-value='$perc'></div>";
+								$start += $perc;
 							}
 						}
 					?>
