@@ -247,7 +247,7 @@
 							$start = 0;
 							foreach($perc_arr as $key => $value)
 							{
-								$perc = 360 * $value;
+								$perc = 360 * ($value/100);
 								$class = "pie";
 								if($perc > 180)
 									$class .= " big";
