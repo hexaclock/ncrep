@@ -228,6 +228,7 @@
 					<div class="pie highlight" data-start="30" data-value="30"></div>
 					<div class="pie" data-start="60" data-value="40"></div>
 					<div class="pie big" data-start="100" data-value="260"></div>
+					<br /><br />
 					<?php
 						if(isset($file_stats))
 						{
@@ -241,6 +242,16 @@
 								else
 									echo " || ";
 								$i++;
+							}
+							echo "<br /><br />";
+							$start = 0;
+							foreach($perc_arr as $key => $value)
+							{
+								$class = "pie";
+								if($value > 180)
+									$value .= " big";
+								echo "<div class='pie' data-start='$start' data-value='$value'></div>";
+								$start += $value;
 							}
 						}
 					?>
