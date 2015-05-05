@@ -87,20 +87,20 @@
 			/*
 			  add colour to each piece.
 			*/
-				.pie:nth-of-type(1):BEFORE,
-				.pie:nth-of-type(1):AFTER {
+				.pie:nth-of-type(n+1):BEFORE,
+				.pie:nth-of-type(n+1):AFTER {
 					background-color:blue;	
 				}
-				.pie:nth-of-type(2):AFTER,
-				.pie:nth-of-type(2):BEFORE {
+				.pie:nth-of-type(n+2):AFTER,
+				.pie:nth-of-type(n+2):BEFORE {
 					background-color:green;	
 				}
-				.pie:nth-of-type(3):AFTER,
-				.pie:nth-of-type(3):BEFORE {
+				.pie:nth-of-type(n+3):AFTER,
+				.pie:nth-of-type(n+3):BEFORE {
 					background-color:red;	
 				}
-				.pie:nth-of-type(4):AFTER,
-				.pie:nth-of-type(4):BEFORE {
+				.pie:nth-of-type(n+4):AFTER,
+				.pie:nth-of-type(n+4):BEFORE {
 					background-color:orange;	
 				}
 			/*
