@@ -6,7 +6,16 @@ $(function() {
 		var i = $(this).index()+1;
 		updateTableColor(i, "#fff");
 	});
+	
+	toggle_actualstats();
+	$(".togglestats").click(toggle_actualstats);
+	
 });
+
+function toggle_actualstats()
+{
+	$(".actualstats").toggle();
+}
 
 function updateTableColor(n, color)
 {
