@@ -18,7 +18,7 @@ class Statistics extends File
 	{
 		$this->FileObj = new File($csvfname);
 		if ($this->FileObj->parseFile() == NULL)
-			die("Failed to parse packet capture CSV file\n");
+			die("Invalid CSV file\n");
 		$this->colformat = $this->FileObj->getColumnFormat();
 		$this->pcaparr   = $this->FileObj->getPCAPArray();
 		$this->numrows   = $this->FileObj->getNumRows();
