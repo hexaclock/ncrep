@@ -73,6 +73,7 @@
 						<div id="canvas-holder">
 							<canvas id="chart-area" width="300" height="300"/>
 						</div>
+						<ul class="doughnut-legend"></ul>	
 					</div>
 					<div class="left">
 						<span class="togglestats button">View Actual Percentages</span>
