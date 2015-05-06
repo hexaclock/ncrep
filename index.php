@@ -99,10 +99,12 @@
 							?>
 						</div>
 						<div class="rawdata">
+							<div class="left">
 							<?php
 								echo "Total Number of Packets: ".$file_stats->getTotalPacketsCount()."<br />";
 								
 							?>
+							</div>
 						</div>
 					</div>
 				</div>
