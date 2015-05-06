@@ -24,13 +24,13 @@ $(function() {
 
 function toggle_actualstats()
 {
-	$(".rawdata").hide();
+	$(".togglestats").parent().find("div").each(function() { $(this).hide() });
 	$(".actualstats").toggle();
 }
 
 function toggle_rawdata()
 {
-	$(".actualstats").hide();
+	$(".toggleraw").parent().find("div").each(function() { $(this).hide() });
 	$(".rawdata").toggle();
 }
 

@@ -24,13 +24,19 @@ $(function() {
 
 function toggle_actualstats()
 {
-	$(".togglestats").parent().find("div").each(function() { $(this).hide() });
+	$(".togglestats").parent().find("div").each(function() {
+		if(!$(this).hasClass("actualstats"))
+			$(this).hide() 
+	});
 	$(".actualstats").toggle();
 }
 
 function toggle_rawdata()
 {
-	$(".toggleraw").parent().find("div").each(function() { $(this).hide() });
+	$(".toggleraw").parent().find("div").each(function() { 
+		if(!$(this).hasClass("rawdata"))
+			$(this).hide() 
+	});
 	$(".rawdata").toggle();
 }
 

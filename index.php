@@ -28,7 +28,7 @@
 				?>
 				<input type="file" name="packet" id="packet" />
 				<input type="hidden" name="check" value="1" />
-				<input type="submit" value="Upload" name="upload" />
+				<input type="submit" class="submitbutton" value="Upload" name="upload" />
 			</form>
 			<?php
 				if(isset($file_stats))
@@ -81,12 +81,13 @@
 						<div class="actualstats">
 							<?php
 								$i = 1;
+								$count = count($perc_arr);
 								foreach($perc_arr as $key => $value)
 								{
 									echo "<strong>$key</strong> : $value%";
 									if(($i % 4) == 0)
 										echo "<br />";
-									else
+									else if($i < $count)
 										echo " || ";
 									$i++;
 								}
