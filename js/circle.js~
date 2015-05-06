@@ -1,3 +1,4 @@
+var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 var randomColorFactor = function(){ return Math.round(Math.random()*255)};
 
 var pieData = [

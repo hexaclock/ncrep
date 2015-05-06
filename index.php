@@ -12,7 +12,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/Chart.min.js"></script>
 		<script src="js/main.js"></script>
-		<script src="js/circle.js"></script>
 		<script src="js/tablesort.js"></script>
 		<!--<style type='text/css'>
 			/* 
@@ -256,16 +255,24 @@
 								$i++;
 							}
 							echo "<br /><br />";
-							/*$start = 0;
+							
+							var pieData = [
+
+];
+							$start = 0;
+							$js = ""
 							foreach($perc_arr as $key => $value)
 							{
 								$perc = round(360 * ($value/100));
 								$class = "pie";
 								if($perc > 180)
 									$class .= " big";
-								echo "<div class='pie' data-start='$start' data-value='$perc' data-perc='$value' data-key='$key'></div>";
+								$randcolor = strtoupper(dechex(rand(0x000000, 0xFFFFFF)));
+								$js .= "{ value: $perc, color: \"$randcolor\", highlight: \"$randcolor\", label: \"$key\" },";
 								$start += $perc;
-							}*/
+							}
+							$js = rtrim($js,',');
+							echo "<script>pieData = [ $js ];</script><script src=\"js/circle.js\"></script>";
 						}
 					?>
 					<div id="canvas-holder">
