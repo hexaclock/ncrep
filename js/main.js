@@ -10,6 +10,9 @@ $(function() {
 	toggle_actualstats();
 	$(".togglestats").click(toggle_actualstats);
 	
+	toggle_rawdata()
+	$(".toggleraw").click(toggle_rawdata);
+	
 	/*$("form").submit(function() {
 		$('input[type=submit]', this).val("Uploading...").attr('disabled', 'disabled');
 		//return true;
