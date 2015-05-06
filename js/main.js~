@@ -12,6 +12,7 @@ $(function() {
 	
 	$("form").submit(function() {
 		$(input[name='upload']).val("Uploading...").attr('disabled', 'disabled');
+		return true;
 	});
 	
 });
