@@ -216,7 +216,7 @@
 						echo "<p>".$upload_error."</p>";
 				?>
 				<input type="file" name="packet" id="packet" />
-				<input type="submit" onclick="this.value='Uploading...'; this.disable = true" value="Upload" name="upload" />
+				<input type="submit" onclick="this.value='Uploading...'; this.disabled = true" value="Upload" name="upload" />
 			</form>
 			
 			<div class="data">
