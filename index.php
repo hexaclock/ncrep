@@ -10,8 +10,11 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="js/Chart.min.js"></script>
 		<script src="js/main.js"></script>
-		<style type='text/css'>
+		<script src="js/circle.js"></script>
+		<script src="js/tablesort.js"></script>
+		<!--<style type='text/css'>
 			/* 
 			  make each pie piece a rectangle twice as high as it is wide.
 			  move the transform origin to the middle of the left side.
@@ -197,7 +200,9 @@
 					i++;
 				});
 			});
-		</script>
+			
+			
+		</script>-->
 	</head>
 	<body>
 		<div class="title">
@@ -251,7 +256,7 @@
 								$i++;
 							}
 							echo "<br /><br />";
-							$start = 0;
+							/*$start = 0;
 							foreach($perc_arr as $key => $value)
 							{
 								$perc = round(360 * ($value/100));
@@ -260,10 +265,12 @@
 									$class .= " big";
 								echo "<div class='pie' data-start='$start' data-value='$perc' data-perc='$value' data-key='$key'></div>";
 								$start += $perc;
-							}
+							}*/
 						}
 					?>
-					<div class="pieinfo"></div>
+					<div id="canvas-holder">
+						<canvas id="chart-area" width="300" height="300"/>
+					</div>
 				</div>
 			</div>
 		</div>
