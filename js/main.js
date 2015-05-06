@@ -7,6 +7,10 @@ $(function() {
 		updateTableColor(i, "#fff");
 	});
 	
+	$('#falseupload').click(function(){
+    $("#packet").click();
+  });
+	
 	$(".actualstats").hide();
 	$(".togglestats").click({butt: "togglestats", div: "actualstats"}, toggle);
 	$(".rawdata").hide();

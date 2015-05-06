@@ -41,7 +41,7 @@ function toggle(event)
 	}
 	
 	//hide all other divs
-	$(".tabbed div").each(function() {
+	$(".tabbed>div").each(function() {
 		if(!$(this).hasClass(event.data.div))
 			$(this).hide();
 	});
