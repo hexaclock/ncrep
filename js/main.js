@@ -15,6 +15,11 @@ $(function() {
 		//return true;
 	});*/
 	
+	$('form').on('submit', function(e) {
+		$('input[type=submit]', this).val("Uploading...").prop('disabled', true);
+		// e.preventDefault();
+	});
+	
 });
 
 function toggle_actualstats()
