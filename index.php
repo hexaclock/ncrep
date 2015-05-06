@@ -256,9 +256,6 @@
 							}
 							echo "<br /><br />";
 							
-							var pieData = [
-
-];
 							$start = 0;
 							$js = "";
 							foreach($perc_arr as $key => $value)
