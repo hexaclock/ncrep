@@ -76,7 +76,7 @@
 					</div>
 					<div class="left">
 						<span class="togglestats">View Actual Percentages</span>
-						<div class="actualstats">
+						<div class="actualstats button">
 							<?php
 								$i = 1;
 								foreach($perc_arr as $key => $value)
