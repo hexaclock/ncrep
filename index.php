@@ -30,7 +30,6 @@
 				<span class="filepath">No file chosen</span>
 				<button type="button" class="inputbutt" id="falseupload">Choose File</button>
 				<input type="hidden" name="check" value="1" />
-				<br />
 				<input type="submit" class="inputbutt" value="Upload" name="upload" />
 			</form>
 			<?php
