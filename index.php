@@ -235,7 +235,6 @@
 					<div class="pie highlight" data-start="30" data-value="30"></div>
 					<div class="pie" data-start="60" data-value="40"></div>
 					<div class="pie big" data-start="100" data-value="260"></div>-->
-					<div class="pieinfo"></div>
 					<br /><br />
 					<?php
 						if(isset($file_stats))
@@ -264,6 +263,7 @@
 							}
 						}
 					?>
+					<div class="pieinfo"></div>
 				</div>
 			</div>
 		</div>
