@@ -3,8 +3,8 @@
 require_once("classes/Statistics.php");
 
 $upload_error = "";
-echo $_POST['check'];
-if(isset($_POST['upload']))
+
+if(isset($_POST['check']))
 {
 	//check to make sure user actually uploaded something
 	if(!file_exists($_FILES['packet']['tmp_name']) || !is_uploaded_file($_FILES['packet']['tmp_name'])) {
