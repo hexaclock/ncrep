@@ -11,7 +11,7 @@ $(function() {
 	$(".togglestats").click(toggle_actualstats);
 	
 	$("form").submit(function() {
-		$('input[type=submit]', this).val("Uploading...").attr('disabled', 'disabled');
+		$('input[type=submit]', this).attr('disabled', 'disabled');
 		//return true;
 	});
 	
