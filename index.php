@@ -235,26 +235,11 @@
 				</table>
 				
 				<div class="stats">
-					<!--<div class="pie" data-start="0" data-value="30"></div>
-					<div class="pie highlight" data-start="30" data-value="30"></div>
-					<div class="pie" data-start="60" data-value="40"></div>
-					<div class="pie big" data-start="100" data-value="260"></div>-->
 					<br /><br />
 					<?php
 						if(isset($file_stats))
 						{
 							$perc_arr = $file_stats->getProtocolsPercent();
-							$i = 1;
-							foreach($perc_arr as $key => $value)
-							{
-								echo "<strong>$key</strong> : $value%";
-								if(($i % 4) == 0)
-									echo "<br />";
-								else
-									echo " || ";
-								$i++;
-							}
-							echo "<br /><br />";
 							
 							$start = 0;
 							$js = "";
@@ -273,8 +258,30 @@
 							echo "<script>pieData = [ $js ];</script><script src=\"js/circle.js\"></script>";
 						}
 					?>
-					<div id="canvas-holder">
-						<canvas id="chart-area" width="300" height="300"/>
+					<div class="left">
+						<p>Hover over a section to view the protocol type.</p>
+						<div id="canvas-holder">
+							<canvas id="chart-area" width="300" height="300"/>
+						</div>
+					</div>
+					<div class="left">
+						<span>View Actual Percentages</span>
+						<?php
+							if(isset($file_stats))
+							{
+								$perc_arr = $file_stats->getProtocolsPercent();
+								$i = 1;
+								foreach($perc_arr as $key => $value)
+								{
+									echo "<strong>$key</strong> : $value%";
+									if(($i % 4) == 0)
+										echo "<br />";
+									else
+										echo " || ";
+									$i++;
+								}
+							}	
+						?>
 					</div>
 				</div>
 			</div>

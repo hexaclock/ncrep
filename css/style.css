@@ -20,6 +20,9 @@ div.side {
 	width: 20%;
 	float: left;
 }
+div.left {
+	float: left;
+}
 table.packet-info {
 	width: 80%;
 }
