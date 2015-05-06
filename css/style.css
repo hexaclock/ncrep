@@ -24,7 +24,7 @@ div.content form {
 	padding: 7px;
 	cursor: pointer;
 }
-.button:hover {
+.button:hover, .button.highlight {
 	background-color: #E8E8E8;
 }
 .inputbutt {

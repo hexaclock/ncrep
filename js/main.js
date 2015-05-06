@@ -29,18 +29,36 @@ function toggle_actualstats()
 {
 	$(".togglestats").parent().find("div").each(function() {
 		if(!$(this).hasClass("actualstats"))
-			$(this).hide() 
+			$(this).hide();
 	});
-	$(".actualstats").toggle();
+	if($(".actualstats").attr("display") == 'none')
+	{
+		$(".actualstats").show();
+		$(".togglestats").addClass("highlight");
+	}
+	else
+	{
+		$(".actualstats").hide();
+		$(".togglestats").removeClass("highlight");
+	}
 }
 
 function toggle_rawdata()
 {
 	$(".toggleraw").parent().find("div").each(function() { 
 		if(!$(this).hasClass("rawdata"))
-			$(this).hide() 
+			$(this).hide();
 	});
-	$(".rawdata").toggle();
+	if($(".rawdata").attr("display") == 'none')
+	{
+		$(".rawdata").show();
+		$(".toggleraw").addClass("highlight");
+	}
+	else
+	{
+		$(".rawdata").hide();
+		$(".toggleraw").removeClass("highlight");
+	}
 }
 
 function updateTableColor(n, color)
