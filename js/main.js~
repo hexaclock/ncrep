@@ -24,17 +24,18 @@ $(function() {
 	
 });
 
-function toggle(e)
+function toggle(event)
 {
+	console.log("hi "+event.data.div);
 	$(".tabbed span.highlight").removeClass("highlight");
-	if($("."+e.data.div).css("display" == 'none')
+	if($("."+event.data.div).css("display" == 'none'))
 	{
-		$("."+e.data.div).show();
-		$("."+e.data.butt).addClass("highlight");
+		$("."+event.data.div).show();
+		$("."+event.data.butt).addClass("highlight");
 	}
 	else
 	{
-		$("."+e.data.div).hide();
+		$("."+event.data.div).hide();
 	}
 }
 
