@@ -84,11 +84,11 @@
 								$count = count($perc_arr);
 								foreach($perc_arr as $key => $value)
 								{
-									if(($i % 6) == 0)
+									if(($i % 7) == 0)
 										echo "<div class='left'>";
 									echo "<strong>$key</strong> : $value%";
 									$i++;
-									if(($i % 6) == 0)
+									if(($i % 7) == 0)
 										echo "</div>";
 									else
 										echo "<br />";
