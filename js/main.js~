@@ -9,9 +9,9 @@ $(function() {
 });
 
 function updateTableColor(n, color)
-	{
-		$("table th:nth-child("+n+")").css("background-color", color);
-		$("table tr td:nth-child("+n+")").each( function () {
-			$(this).css("background-color", color);
-		});
-	}
+{
+	$("table th:nth-child("+n+")").css("background-color", color);
+	$("table tr td:nth-child("+n+")").each( function () {
+		$(this).css("background-color", color);
+	});
+}

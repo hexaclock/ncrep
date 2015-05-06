@@ -265,23 +265,25 @@
 						</div>
 					</div>
 					<div class="left">
-						<span>View Actual Percentages</span>
-						<?php
-							if(isset($file_stats))
-							{
-								$perc_arr = $file_stats->getProtocolsPercent();
-								$i = 1;
-								foreach($perc_arr as $key => $value)
+						<span class="togglestats">View Actual Percentages</span>
+						<div class="actualstats">
+							<?php
+								if(isset($file_stats))
 								{
-									echo "<strong>$key</strong> : $value%";
-									if(($i % 4) == 0)
-										echo "<br />";
-									else
-										echo " || ";
-									$i++;
-								}
-							}	
-						?>
+									$perc_arr = $file_stats->getProtocolsPercent();
+									$i = 1;
+									foreach($perc_arr as $key => $value)
+									{
+										echo "<strong>$key</strong> : $value%";
+										if(($i % 4) == 0)
+											echo "<br />";
+										else
+											echo " || ";
+										$i++;
+									}
+								}	
+							?>
+						</div>
 					</div>
 				</div>
 			</div>
