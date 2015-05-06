@@ -10,8 +10,8 @@ $(function() {
 	toggle_actualstats();
 	$(".togglestats").click(toggle_actualstats);
 	
-	$("input[name='upload']").click(function() {
-		$(this).val("Uploading...").attr('disabled', 'disabled');
+	$("form").submit(function() {
+		$(input[name='upload']).val("Uploading...").attr('disabled', 'disabled');
 	});
 	
 });
