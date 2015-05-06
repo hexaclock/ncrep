@@ -265,7 +265,7 @@
 								if($perc > 180)
 									$class .= " big";
 								$randcolor = strtoupper(dechex(rand(0x000000, 0xFFFFFF)));
-								$js .= "{ value: $perc, color: \"$randcolor\", highlight: \"$randcolor\", label: \"$key\" },";
+								$js .= "{ value: $perc, color: \"#$randcolor\", highlight: \"#$randcolor\", label: \"$key\" },";
 								$start += $perc;
 							}
 							$js = rtrim($js,',');
