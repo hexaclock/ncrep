@@ -260,7 +260,7 @@
 
 ];
 							$start = 0;
-							$js = ""
+							$js = "";
 							foreach($perc_arr as $key => $value)
 							{
 								$perc = round(360 * ($value/100));
