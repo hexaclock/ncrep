@@ -7,27 +7,28 @@ $(function() {
 		updateTableColor(i, "#fff");
 	});
 	
+	// event listeners for form
 	$('#falseupload').click(function(){
 		$("#packet").click();
 	});
+	
 	$("#packet").change(function() {
-		$(".filepath").text($("#packet").val());
+		var filename = $('input[type=file]').val().split('\\').pop();
+		$(".filepath").text(filename);
 	});
 	
+	$('form').on('submit', function(e) {
+		$('input[type=submit]', this).val("Uploading...").prop('disabled', true);
+	});
+	
+	
+	// tabbed content listeners
 	$(".actualstats").hide();
 	$(".togglestats").click({butt: "togglestats", div: "actualstats"}, toggle);
 	$(".rawdata").hide();
 	$(".toggleraw").click({butt: "toggleraw", div: "rawdata"}, toggle);
 	
-	/*$("form").submit(function() {
-		$('input[type=submit]', this).val("Uploading...").attr('disabled', 'disabled');
-		//return true;
-	});*/
 	
-	$('form').on('submit', function(e) {
-		$('input[type=submit]', this).val("Uploading...").prop('disabled', true);
-		// e.preventDefault();
-	});
 	
 });
 

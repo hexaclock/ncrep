@@ -25,8 +25,6 @@ if(isset($_POST['check']))
 		{
 			//file has been uploaded successfully
 			$file_stats = new Statistics($target_file);
-			//$arr3 = $file_stats->getCredentials();
-			//print_r($arr3);
 		}
 		else
 			$upload_error = "Upload failed.";
