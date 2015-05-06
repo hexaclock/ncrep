@@ -28,7 +28,7 @@ function toggle(event)
 {
 	console.log("hi "+event.data.div);
 	$(".tabbed span.highlight").removeClass("highlight");
-	if($("."+event.data.div).css("display" == 'none'))
+	if($("."+event.data.div).css("display") == 'none')
 	{
 		$("."+event.data.div).show();
 		$("."+event.data.butt).addClass("highlight");
@@ -37,6 +37,10 @@ function toggle(event)
 	{
 		$("."+event.data.div).hide();
 	}
+	$(".tabbed div").each(function() {
+		if(!$(this).hasClass(event.data.div))
+			$(this).hide();
+	});
 }
 
 function updateTableColor(n, color)

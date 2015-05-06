@@ -37,6 +37,10 @@ function toggle(event)
 	{
 		$("."+event.data.div).hide();
 	}
+	$(".tabbed div").each(function() {
+		if(!$(this).hasClass(event.data.div))
+			$(this).hide();
+	});
 }
 
 function updateTableColor(n, color)
