@@ -161,6 +161,13 @@
 				var pies = $("div.pie");
 				var numpies = pies.length;
 				var i = 1;
+				pies.hover(function() {
+					var type = $(this).attr("data-key");
+					var perc = $(this).attr("data-perc");
+					$("div.pieinfo").html("<h2>"+type+"</h2><p>"+perc+"</p>");
+				}, function() {
+					$("div.pieinfo").html("");
+				});
 				pies.each(function() {
 					start = parseInt($(this).attr("data-start"));
 					starttext = "rotate("+start+"deg)";
@@ -228,6 +235,7 @@
 					<div class="pie highlight" data-start="30" data-value="30"></div>
 					<div class="pie" data-start="60" data-value="40"></div>
 					<div class="pie big" data-start="100" data-value="260"></div>-->
+					<div class="pieinfo"></div>
 					<br /><br />
 					<?php
 						if(isset($file_stats))
@@ -251,7 +259,7 @@
 								$class = "pie";
 								if($perc > 180)
 									$class .= " big";
-								echo "<div class='pie' data-start='$start' data-value='$perc'></div>";
+								echo "<div class='pie' data-start='$start' data-value='$perc' data-perc='$value' data-key='$key'></div>";
 								$start += $perc;
 							}
 						}
