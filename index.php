@@ -75,7 +75,7 @@
 						</div>
 						<ul class="doughnut-legend"></ul>	
 					</div>
-					<div class="left">
+					<div class="left tabbed">
 						<span class="togglestats button">View Actual Percentages</span>
 						<span class="toggleraw button">View Other Raw Data</span>
 						<div class="actualstats">

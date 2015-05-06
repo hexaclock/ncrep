@@ -7,11 +7,10 @@ $(function() {
 		updateTableColor(i, "#fff");
 	});
 	
-	toggle_actualstats();
-	$(".togglestats").click(toggle_actualstats);
-	
-	toggle_rawdata()
-	$(".toggleraw").click(toggle_rawdata);
+	$(".actualstats").hide();
+	$(".togglestats").click({butt: "togglestats", div: "actualstats"}, toggle);
+	$(".rawdata").hide();
+	$(".toggleraw").click({butt: "toggleraw", div: "rawdata"}, toggle);
 	
 	/*$("form").submit(function() {
 		$('input[type=submit]', this).val("Uploading...").attr('disabled', 'disabled');
@@ -25,8 +24,23 @@ $(function() {
 	
 });
 
+function toggle(e)
+{
+	$(".tabbed span.highlight").removeClass("highlight");
+	if($("."+e.data.div).css("display" == 'none')
+	{
+		$("."+e.data.div).show();
+		$("."+e.data.butt).addClass("highlight");
+	}
+	else
+	{
+		$("."+e.data.div).hide();
+	}
+}
+
 function toggle_actualstats()
 {
+	resetHighlight();
 	$(".togglestats").parent().find("div").each(function() {
 		if(!$(this).hasClass("actualstats"))
 			$(this).hide();
@@ -43,9 +57,15 @@ function toggle_actualstats()
 	}
 }
 
+function resetHighlight()
+{
+	$(".tabbed span.highlight").removeClass("highlight");
+}
+
 function toggle_rawdata()
 {
-	$(".toggleraw").parent().find("div").each(function() { 
+	resetHighlight();
+	$(".toggleraw").parent().find("div").each(function() {
 		if(!$(this).hasClass("rawdata"))
 			$(this).hide();
 	});
