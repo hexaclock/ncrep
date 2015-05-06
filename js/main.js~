@@ -30,49 +30,11 @@ function toggle(e)
 	if($("."+e.data.div).css("display" == 'none')
 	{
 		$("."+e.data.div).show();
-	}
-}
-
-function toggle_actualstats()
-{
-	resetHighlight();
-	$(".togglestats").parent().find("div").each(function() {
-		if(!$(this).hasClass("actualstats"))
-			$(this).hide();
-	});
-	if($(".actualstats").css("display") == 'none')
-	{
-		$(".actualstats").show();
-		$(".togglestats").addClass("highlight");
+		$("."+e.data.butt).addClass("highlight");
 	}
 	else
 	{
-		$(".actualstats").hide();
-		$(".togglestats").removeClass("highlight");
-	}
-}
-
-function resetHighlight()
-{
-	$(".tabbed span.highlight").removeClass("highlight");
-}
-
-function toggle_rawdata()
-{
-	resetHighlight();
-	$(".toggleraw").parent().find("div").each(function() {
-		if(!$(this).hasClass("rawdata"))
-			$(this).hide();
-	});
-	if($(".rawdata").css("display") == 'none')
-	{
-		$(".rawdata").show();
-		$(".toggleraw").addClass("highlight");
-	}
-	else
-	{
-		$(".rawdata").hide();
-		$(".toggleraw").removeClass("highlight");
+		$("."+e.data.div).hide();
 	}
 }
 
