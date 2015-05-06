@@ -11,7 +11,8 @@ $(function() {
 		$("#packet").click();
 	});
 	$("#packet").change(function() {
-		$(".filepath").text($("#packet").val());
+		var filename = $('input[type=file]').val().split('\\').pop();
+		$(".filepath").text(filename);
 	});
 	
 	$(".actualstats").hide();

@@ -11,7 +11,7 @@ $(function() {
 		$("#packet").click();
 	});
 	$("#packet").change(function() {
-		$("
+		$(".filepath").text($("#packet").val());
 	});
 	
 	$(".actualstats").hide();
