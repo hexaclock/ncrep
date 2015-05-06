@@ -3,7 +3,7 @@
 require_once("classes/Statistics.php");
 
 $upload_error = "";
-echo $_POST['upload'];
+echo $_POST['check'];
 if(isset($_POST['upload']))
 {
 	//check to make sure user actually uploaded something

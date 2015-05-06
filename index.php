@@ -216,6 +216,7 @@
 						echo "<p>".$upload_error."</p>";
 				?>
 				<input type="file" name="packet" id="packet" />
+				<input type="hidden" name="check" value="1" />
 				<input type="submit" value="Upload" name="upload" />
 			</form>
 			
