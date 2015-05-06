@@ -21,6 +21,7 @@ div.content form {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	padding: 7px;
 	cursor: pointer;
 }
 .button:hover {
