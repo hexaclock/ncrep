@@ -24,7 +24,14 @@ $(function() {
 
 function toggle_actualstats()
 {
+	$(".togglestats").parent().find("div").each(function() { $(this).hide() });
 	$(".actualstats").toggle();
+}
+
+function toggle_rawdata()
+{
+	$(".toggleraw").parent().find("div").each(function() { $(this).hide() });
+	$(".rawdata").toggle();
 }
 
 function updateTableColor(n, color)
