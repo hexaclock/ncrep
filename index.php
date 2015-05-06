@@ -90,7 +90,7 @@
 									$i++;
 									if(($i % 6) == 0)
 										echo "</div>";
-									else if($i < ($count-1))
+									else
 										echo "<br />";
 								}
 							?>
