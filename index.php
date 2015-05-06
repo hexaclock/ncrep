@@ -219,7 +219,10 @@
 				<input type="hidden" name="check" value="1" />
 				<input type="submit" value="Upload" name="upload" />
 			</form>
-			
+			<?php
+				if(isset($file_stats))
+				{
+			?>
 			<div class="data">
 				<table class="packet-info">
 					<tr>
@@ -230,34 +233,30 @@
 						<th>Password</th>
 					</tr>
 					<?php
-						if (isset($file_stats))
-							$file_stats->displayCredentialsTable();
+						$file_stats->displayCredentialsTable();
 					?>
 				</table>
 				
 				<div class="stats">
 					<br /><br />
 					<?php
-						if(isset($file_stats))
+						$perc_arr = $file_stats->getProtocolsPercent();
+						
+						$start = 0;
+						$js = "";
+						foreach($perc_arr as $key => $value)
 						{
-							$perc_arr = $file_stats->getProtocolsPercent();
-							
-							$start = 0;
-							$js = "";
-							foreach($perc_arr as $key => $value)
-							{
-								$perc = round(360 * ($value/100));
-								$class = "pie";
-								if($perc > 180)
-									$class .= " big";
-								$randcolor = strtoupper(dechex(rand(0x000000, 0xFFFFFF)));
-								$highlight = strtoupper(dechex(hexdec($randcolor)+20));
-								$js .= "{ value: $perc, color: \"#$randcolor\", highlight: \"#$highlight\", label: \"$key\" },";
-								$start += $perc;
-							}
-							$js = rtrim($js,',');
-							echo "<script>pieData = [ $js ];</script><script src=\"js/circle.js\"></script>";
+							$perc = round(360 * ($value/100));
+							$class = "pie";
+							if($perc > 180)
+								$class .= " big";
+							$randcolor = strtoupper(dechex(rand(0x000000, 0xFFFFFF)));
+							$highlight = strtoupper(dechex(hexdec($randcolor)+20));
+							$js .= "{ value: $perc, color: \"#$randcolor\", highlight: \"#$highlight\", label: \"$key\" },";
+							$start += $perc;
 						}
+						$js = rtrim($js,',');
+						echo "<script>pieData = [ $js ];</script><script src=\"js/circle.js\"></script>";
 					?>
 					<div class="left">
 						<p>Hover over a section to view the protocol type.</p>
@@ -269,25 +268,25 @@
 						<span class="togglestats">View Actual Percentages</span>
 						<div class="actualstats">
 							<?php
-								if(isset($file_stats))
+								$i = 1;
+								foreach($perc_arr as $key => $value)
 								{
-									$perc_arr = $file_stats->getProtocolsPercent();
-									$i = 1;
-									foreach($perc_arr as $key => $value)
-									{
-										echo "<strong>$key</strong> : $value%";
-										if(($i % 4) == 0)
-											echo "<br />";
-										else
-											echo " || ";
-										$i++;
-									}
-								}	
+									echo "<strong>$key</strong> : $value%";
+									if(($i % 4) == 0)
+										echo "<br />";
+									else
+										echo " || ";
+									$i++;
+								}
 							?>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			<?php
+				}
+			?>
 		</div>
 		
 		<div class="side">
