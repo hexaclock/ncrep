@@ -87,11 +87,11 @@
 									if(($i % 6) == 0)
 										echo "<div class='left'>";
 									echo "<strong>$key</strong> : $value%";
+									$i++;
 									if(($i % 6) == 0)
 										echo "</div>";
 									else if($i < ($count-1))
 										echo "<br />";
-									$i++;
 								}
 							?>
 						</div>
