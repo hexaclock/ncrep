@@ -26,8 +26,10 @@ $(function() {
 
 function toggle(event)
 {
-	console.log("hi "+event.data.div);
+	// reset highlights
 	$(".tabbed span.highlight").removeClass("highlight");
+	
+	//toggle view and highlight if necessary
 	if($("."+event.data.div).css("display") == 'none')
 	{
 		$("."+event.data.div).show();
@@ -37,6 +39,8 @@ function toggle(event)
 	{
 		$("."+event.data.div).hide();
 	}
+	
+	//hide all other divs
 	$(".tabbed div").each(function() {
 		if(!$(this).hasClass(event.data.div))
 			$(this).hide();

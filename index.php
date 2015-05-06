@@ -80,7 +80,7 @@
 						<span class="toggleraw button">View Other Raw Data</span>
 						<div class="actualstats">
 							<?php
-								$i = 1;
+								$i = 0;
 								$count = count($perc_arr);
 								foreach($perc_arr as $key => $value)
 								{
@@ -89,7 +89,7 @@
 									echo "<strong>$key</strong> : $value%";
 									if(($i % 6) == 0)
 										echo "</div>";
-									else if($i < $count)
+									else if($i < ($count-1))
 										echo "<br />";
 									$i++;
 								}
