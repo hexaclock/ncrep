@@ -31,7 +31,7 @@ function toggle_actualstats()
 		if(!$(this).hasClass("actualstats"))
 			$(this).hide();
 	});
-	if($(".actualstats").attr("display") == 'none')
+	if($(".actualstats").css("display") == 'none')
 	{
 		$(".actualstats").show();
 		$(".togglestats").addClass("highlight");
@@ -49,7 +49,7 @@ function toggle_rawdata()
 		if(!$(this).hasClass("rawdata"))
 			$(this).hide();
 	});
-	if($(".rawdata").attr("display") == 'none')
+	if($(".rawdata").css("display") == 'none')
 	{
 		$(".rawdata").show();
 		$(".toggleraw").addClass("highlight");
