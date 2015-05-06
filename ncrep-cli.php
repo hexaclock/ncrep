@@ -4,7 +4,7 @@ require("classes/Statistics.php");
 
 if ($argc < 2)
 {
-	print "usage: php $argv[0] <list of CSV packet capture files>\n";
+	print "usage: php $argv[0] <CSV packet capture file>\n";
 	return 1;
 }
 
