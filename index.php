@@ -26,7 +26,7 @@
 					if ($upload_error != "")
 						echo "<p>".$upload_error."</p>";
 				?>
-				<input type="file" class="inputbutt" name="packet" id="packet" />
+				<input type="file" class="" name="packet" id="packet" />
 				<input type="hidden" name="check" value="1" />
 				<input type="submit" class="inputbutt" value="Upload" name="upload" />
 			</form>
