@@ -10,6 +10,10 @@ $(function() {
 	toggle_actualstats();
 	$(".togglestats").click(toggle_actualstats);
 	
+	$("input[name='upload']").click(function() {
+		$(this).val("Uploading...").attr('disabled', 'disabled');
+	});
+	
 });
 
 function toggle_actualstats()
