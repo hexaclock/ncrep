@@ -56,6 +56,7 @@
 						
 						$start = 0;
 						$js = "";
+						// Put together data for doughnut chart
 						foreach($perc_arr as $key => $value)
 						{
 							$perc = round(360 * ($value/100));
