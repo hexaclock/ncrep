@@ -8,8 +8,11 @@ $(function() {
 	});
 	
 	$('#falseupload').click(function(){
-    $("#packet").click();
-  });
+		$("#packet").click();
+	});
+	$("#packet").change(function() {
+		$(".filepath").text($("#packet").val());
+	});
 	
 	$(".actualstats").hide();
 	$(".togglestats").click({butt: "togglestats", div: "actualstats"}, toggle);
